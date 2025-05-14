@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Đăng nhập & Đăng ký có OTP</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .form-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      width: 320px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .input-group {
+      margin-bottom: 15px;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #5a67d8;
+    }
+    .toggle {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .toggle a {
+      color: #667eea;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <!-- Đăng nhập -->
+    <form id="loginForm" onsubmit="return handleLogin(event)">
+      <h2>Đăng nhập</h2>
+      <div class="input-group">
+        <input type="text" id="loginUser" placeholder="Username" required />
+      </div>
+      <div class="input-group">
+        <input type="password" id="loginPass" placeholder="Password" required />
+      </div>
+      <button type="submit">Đăng nhập</button>
+      <div class="toggle">
+        Chưa có tài khoản? <a onclick="toggleForms()">Đăng ký</a>
+      </div>
+    </form>
+
+    <!-- Nhập mã OTP -->
+    <form id="otpForm" class="hidden" onsubmit="return verifyOtp(event)">
+      <h2>Xác nhận OTP</h2>
+      <p>OTP đã gửi: <b id="otpDisplay"></b></p>
+      <div class="input-group">
+        <input type="text" id="otpInput" placeholder="Nhập mã OTP" required />
+      </div>
+      <button type="submit">Xác minh</button>
+    </form>
+
+    <!-- Đăng ký -->
+    <form id="registerForm" class="hidden" onsubmit="return handleRegister(event)">
+      <h2>Đăng ký</h2>
+      <div class="input-group">
+        <input type="text" id="regUser" placeholder="Username" required />
+      </div>
+      <div class="input-group">
+        <input type="email" id="regEmail" placeholder="Email" required />
+      </div>
+      <div class="input-group">
+        <input type="password" id="regPass" placeholder="Password" required />
+      </div>
+      <button type="submit">Đăng ký</button>
+      <div class="toggle">
+        Đã có tài khoản? <a onclick="toggleForms()">Đăng nhập</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function toggleForms() {
+      document.getElementById('loginForm').classList.toggle('hidden');
+      document.getElementById('registerForm').classList.toggle('hidden');
+    }
+
+    function validatePassword(password) {
+      const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+      return regex.test(password);
+    }
+
+    function handleRegister(e) {
+      e.preventDefault();
+      const user = regUser.value.trim();
+      const email = regEmail.value.trim();
+      const pass = regPass.value;
+
+      if (!validatePassword(pass)) {
+        alert("Mật khẩu phải có ít nhất 8 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt.");
+        return false;
+      }
+
+      let accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+      if (accounts.find(a => a.username === user)) {
+        alert("Tài khoản đã tồn tại.");
+        return false;
+      }
+
+      accounts.push({ username: user, email, password: pass });
+      localStorage.setItem('accounts', JSON.stringify(accounts));
+      alert("Đăng ký thành công!");
+      toggleForms();
+    }
+
+    let generatedOtp = "";
+    let loggedInUser = "";
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const user = loginUser.value.trim();
+      const pass = loginPass.value;
+
+      const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+      const found = accounts.find(a => a.username === user && a.password === pass);
+      if (!found) {
+        alert("Sai thông tin đăng nhập.");
+        return false;
+      }
+
+      loggedInUser = user;
+      generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
+
+      document.getElementById("otpDisplay").innerText = generatedOtp;
+      document.getElementById("loginForm").classList.add("hidden");
+      document.getElementById("otpForm").classList.remove("hidden");
+
+      alert(`Mã OTP của bạn là: ${generatedOtp}`);
+    }
+
+    function verifyOtp(e) {
+      e.preventDefault();
+      const entered = otpInput.value.trim();
+      if (entered === generatedOtp) {
+        alert(`Đăng nhập thành công! Xin chào ${loggedInUser}`);
+        localStorage.setItem("currentUser", loggedInUser);
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 1000);
+      } else {
+        alert("Sai mã OTP. Vui lòng thử lại.");
+      }
+    }
+  </script>
+</body>
+</html>

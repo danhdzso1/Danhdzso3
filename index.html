@@ -1,0 +1,140 @@
+<!DOCTYPE html><html lang="vi" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cdanhzZz | Trang Cá Nhân Gaming</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { opacity: 0; transition: opacity 1s ease-in; }
+    body.loaded { opacity: 1; }
+    ::selection { background-color: #9333ea; color: white; }
+  </style>
+</head>
+<body class="bg-white text-black dark:bg-gradient-to-br dark:from-black dark:to-gray-900 dark:text-white font-sans">
+  <!-- HEADER -->
+  <header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-black/80 backdrop-blur shadow-md flex justify-between items-center px-6 py-4">
+    <div class="flex items-center gap-3">
+      <img src="logo.png" alt="Logo" class="h-10 w-10 rounded-full border-2 border-purple-500" />
+      <span class="text-xl font-bold text-purple-600 dark:text-purple-400">cdanhzZz</span>
+    </div>
+    <div class="flex items-center gap-4">
+      <button id="toggleDark" class="text-purple-500 hover:text-purple-300 transition text-xl" title="Chế độ sáng/tối">
+        <svg id="moonIcon" class="w-6 h-6 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+        </svg>
+        <svg id="sunIcon" class="w-6 h-6 block dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m8.66-8.66l-.71.71M4.05 4.05l-.71.71M21 12h-1M4 12H3m16.95-4.95l-.71.71M4.05 19.95l-.71-.71M12 5a7 7 0 100 14 7 7 0 000-14z"/>
+        </svg>
+      </button>
+      <button id="menu-btn" class="md:hidden text-purple-400 focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <nav id="menu" class="hidden absolute top-full right-6 mt-2 bg-white dark:bg-black bg-opacity-90 rounded-lg p-4 space-y-2 text-sm md:text-base md:space-x-4 md:static md:flex md:bg-transparent md:p-0 md:space-y-0">
+      <a href="#home" class="block hover:text-purple-500 dark:hover:text-purple-300">Trang Chủ</a>
+      <a href="#about" class="block hover:text-purple-500 dark:hover:text-purple-300">Giới Thiệu</a>
+      <a href="#ban-acc" class="block hover:text-purple-500 dark:hover:text-purple-300">Bán Acc</a>
+      <a href="#news" class="block hover:text-purple-500 dark:hover:text-purple-300">Tin Tức</a>
+      <a href="#contact" class="block hover:text-purple-500 dark:hover:text-purple-300">Liên Hệ</a>
+    </nav>
+  </header>  <!-- TÌM KIẾM -->  <form action="search.html" method="GET" class="max-w-xl mx-auto px-6 pt-32">
+    <div class="flex rounded overflow-hidden shadow-lg">
+      <input type="text" name="q" placeholder="Tìm kiếm..." class="flex-1 px-4 py-2 text-black" required>
+      <button type="submit" class="bg-purple-600 text-white px-4">Tìm</button>
+    </div>
+  </form>  <!-- TRANG CHỦ -->  <section id="home" class="flex flex-col items-center justify-center min-h-screen text-center px-6 pt-32">
+    <h1 id="typeText" class="text-5xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600"></h1>
+    <p class="mt-6 text-lg text-gray-300 max-w-2xl animate-pulse">
+      Website cá nhân đậm chất gaming - độc đáo, tốc độ và đậm cá tính. Nơi bạn tìm thấy sự sáng tạo không giới hạn.
+    </p>
+    <button class="mt-8 px-6 py-3 bg-purple-600 hover:bg-purple-500 rounded-xl text-white text-lg transition">
+      Bắt đầu ngay
+    </button>
+  </section>  <!-- GIỚI THIỆU -->  <section id="about" class="min-h-screen px-6 py-20 text-center bg-gray-100 dark:bg-gray-900">
+    <h2 class="text-4xl font-bold text-purple-500 dark:text-purple-400 mb-6">Giới Thiệu</h2>
+    <p class="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+      Tôi là <strong>cdanhzZz</strong> – đam mê công nghệ, thiết kế và sáng tạo. Đây là không gian để tôi chia sẻ sản phẩm, ý tưởng và những dự án độc đáo.
+    </p>
+  </section>  <!-- BÁN ACC -->  <section id="ban-acc" class="min-h-screen px-6 py-20 text-center bg-gray-200 dark:bg-gray-950">
+    <h2 class="text-4xl font-bold text-purple-500 dark:text-purple-400 mb-10">Bán Acc Game</h2>
+    <div class="max-w-4xl mx-auto bg-gray-100 dark:bg-gray-900 rounded-xl shadow-lg p-6">
+      <img src="acc1.jpg" alt="Acc Free Fire" class="w-full rounded-xl mb-6 border-2 border-purple-500">
+      <div class="text-left text-gray-700 dark:text-gray-300 space-y-2">
+        <p><strong>Mã số:</strong> #A5CAY6DIN1</p>
+        <p><strong>Đăng Nhập:</strong> Facebook</p>
+        <p><strong>Acc Chuyên:</strong> Đồ Nam, Nữ</p>
+        <p><strong>Skin Súng:</strong> Súng Nâng Cấp, Súng Chế Tác</p>
+        <p><strong>Giá:</strong> <span class="text-green-500 font-bold text-lg">6,199,000đ</span></p>
+      </div>
+    </div>
+  </section>  <!-- TIN TỨC -->  <section id="news" class="min-h-screen px-6 py-20 text-center bg-gray-100 dark:bg-gray-900">
+    <h2 class="text-4xl font-bold text-purple-500 dark:text-purple-400 mb-10">Tin Tức</h2>
+    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto text-left">
+      <div class="bg-gray-200 dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-purple-600 transition">
+        <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-3">Sự kiện Free Fire tháng 5</h3>
+        <p class="text-gray-700 dark:text-gray-300 mb-4">Khám phá các sự kiện nổi bật và phần thưởng hấp dẫn trong tháng 5 dành cho game thủ Free Fire.</p>
+        <a href="chi-tiet-free-fire.html" class="text-purple-500 dark:text-purple-300 hover:underline">Xem chi tiết →</a>
+      </div>
+      <div class="bg-gray-200 dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-purple-600 transition">
+        <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-3">Top 5 ngôi sao nổi tiếng nhất Việt Nam</h3>
+        <p class="text-gray-700 dark:text-gray-300 mb-4">Danh sách Top 5 ngôi sao nổi tiếng tại Việt Nam【Update 12/05/2025】 do tạp chí Forbes bình chọn...</p>
+        <a href="nguoi-noi-tieng.html" class="text-purple-500 dark:text-purple-300 hover:underline">Xem chi tiết →</a>
+      </div>
+      <div class="bg-gray-200 dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-purple-600 transition md:col-span-2">
+        <img src="y20-pakistan.jpg" alt="Y-20 Pakistan" class="w-full h-64 object-cover rounded mb-4 border border-purple-500">
+        <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-3">Trung Quốc điều vận tải cơ Y-20 hỗ trợ Pakistan</h3>
+        <p class="text-gray-700 dark:text-gray-300 mb-4">Trung Quốc được cho là đã điều động nhiều máy bay vận tải chiến lược Y-20 để hỗ trợ Pakistan, làm dấy lên nhiều đồn đoán về hợp tác quân sự khu vực.</p>
+        <a href="tin-tuc.html" class="text-purple-500 dark:text-purple-300 hover:underline">Xem thêm →</a>
+      </div>
+    </div>
+    <div class="mt-10">
+      <a href="tin-tuc.html" class="inline-block bg-purple-600 hover:bg-purple-500 text-white px-6 py-3 rounded-xl transition">Xem tất cả tin tức</a>
+    </div>
+  </section>  <!-- LIÊN HỆ -->  <section id="contact" class="min-h-screen px-6 py-20 text-center bg-gray-200 dark:bg-gray-800">
+    <h2 class="text-4xl font-bold text-purple-500 dark:text-purple-400 mb-6">Liên Hệ</h2>
+    <p class="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-6">
+      Kết nối với tôi qua mạng xã hội hoặc email!
+    </p>
+    <div class="space-x-6">
+      <a href="mailto:danhle910208@gmail.com" class="text-purple-600 dark:text-purple-300 hover:underline">Email</a>
+      <a href="https://www.facebook.com/share/1CXVGCsufB/" target="_blank" class="text-purple-600 dark:text-purple-300 hover:underline">Facebook</a>
+      <a href="https://discord.gg/yourinvite" target="_blank" class="text-purple-600 dark:text-purple-300 hover:underline">Discord</a>
+    </div>
+  </section>  <!-- ĐĂNG NHẬP / ĐĂNG KÝ -->  <!-- ... phần còn lại giữ nguyên như cũ ... -->  <script>
+    window.onload = () => {
+      document.body.classList.add('loaded');
+      const text = "Chào mừng đến với cdanhzZz!";
+      let i = 0;
+      const typing = () => {
+        if (i < text.length) {
+          document.getElementById("typeText").innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typing, 70);
+        }
+      };
+      typing();
+
+      const theme = localStorage.getItem("theme");
+      if (theme === "dark") document.documentElement.classList.add("dark");
+      else document.documentElement.classList.remove("dark");
+    };
+
+    document.getElementById('menu-btn').addEventListener('click', () => {
+      document.getElementById('menu').classList.toggle('hidden');
+    });
+
+    document.getElementById('toggleDark').addEventListener('click', () => {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script></body>
+</html>
